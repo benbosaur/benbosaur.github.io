@@ -6,7 +6,6 @@
     <title>Ben Scott</title>
     <style>
         body {
-            /* Setting the grey background */
             background-color: #f0f0f0; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #333;
@@ -16,54 +15,88 @@
             justify-content: center;
         }
 
-        .container {
+        .page-wrapper {
             max-width: 800px;
             width: 100%;
-            /* Flex layout to put image on left and text on right */
+        }
+
+        /* Top Header Section */
+        header {
             display: flex;
             align-items: center;
             gap: 30px;
+            margin-bottom: 30px;
         }
 
         .profile-pic {
             width: 200px;
-            height: 200px;
-            object-fit: contain;
-            /* Optional: subtle border like academic sites often have */
-            border: 1px solid #ccc;
+            height: auto;
             background-color: white;
             padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-        .header-text h1 {
+        h1 {
             font-size: 2.5rem;
             margin: 0;
-            color: #222;
         }
 
-        /* Mobile responsive: stack vertically on small screens */
+        /* Main Content Section */
+        .content-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .left-col {
+            width: 222px; /* Matches image width (200px) + padding/border */
+            flex-shrink: 0;
+        }
+
+        .right-col {
+            flex-grow: 1;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        /* Responsive stack for mobile */
         @media (max-width: 600px) {
-            .container {
+            header, .content-grid {
                 flex-direction: column;
+                align-items: center;
                 text-align: center;
+            }
+            .left-col {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img 
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" 
-            alt="Bulbasaur" 
-            class="profile-pic"
-        >
+<div class="page-wrapper">
+    <header>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur" class="profile-pic">
+        <h1>Ben Scott</h1>
+    </header>
 
-        <div class="header-text">
-            <h1>Ben Scott</h1>
+    <div class="content-grid">
+        <div class="left-col">
+            <h3>Learning Interests</h3>
+            <p>Computer Science<br>Web Development<br>AI & Robotics</p>
+        </div>
+        
+        <div class="right-col">
+            <h3>About Me</h3>
+            <p>Welcome to my page! I am a student interested in building clean, functional web applications. Inspired by simple academic profiles, I like to keep my work organized and accessible.</p>
         </div>
     </div>
+</div>
 
 </body>
 </html>
