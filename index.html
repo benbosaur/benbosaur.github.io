@@ -3,12 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ben Scott</title>
+    <style>
+        body {
+            /* Setting the grey background */
+            background-color: #f0f0f0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            /* Flex layout to put image on left and text on right */
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            /* Optional: subtle border like academic sites often have */
+            border: 1px solid #ccc;
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #222;
+        }
+
+        /* Mobile responsive: stack vertically on small screens */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-<p>hello</p>
 
-    <script src="script.js"></script>
+    <div class="container">
+        <img 
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" 
+            alt="Bulbasaur" 
+            class="profile-pic"
+        >
+
+        <div class="header-text">
+            <h1>Ben Scott</h1>
+        </div>
+    </div>
+
 </body>
 </html>
