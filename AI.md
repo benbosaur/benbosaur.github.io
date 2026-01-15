@@ -8,3 +8,9 @@ Main goal is to label training data which allows to make predictictions about fu
 **Process**
 Lables / Training data -> Machine Learning Algorithm -> New data -> Predictive Model -> Prediction 
 Email spam filtering is an example. Email is labelled a spam or not spam. This process is also called **a classification task**. If an outcome has a continuous value this is called **regression** . Essentially this is a best fit approach such as price, temperature, fuel usage etc
+
+**Classification**
+Classification can be a yes or no based on previous training data, or can be **multiclass clasification** tasks where there are more than 2 class labels such as different animals 
+
+**Regresion analysis**
+Given a number of predictor **(explantory variables)** and a continuous repsonse variable **(outcome)** and we try and find the relationship between the two to predict an outcome. 
