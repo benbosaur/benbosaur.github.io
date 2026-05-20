@@ -65,7 +65,7 @@
             padding-bottom: 5px;
         }
 
-        /* LIVE ENERGY WIDGET STYLES */
+        /* LIVE ISS TRACKER STYLES */
         .widget-section {
             margin-top: 40px;
             padding-top: 20px;
@@ -76,7 +76,7 @@
             background-color: white;
             border: 1px solid #ccc;
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
@@ -91,8 +91,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background-color: rgba(0, 200, 83, 0.1);
-            color: #00c853;
+            background-color: rgba(0, 110, 255, 0.1);
+            color: #0066cc;
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -104,96 +104,33 @@
         .pulse-dot {
             width: 6px;
             height: 6px;
-            background-color: #00c853;
+            background-color: #0066cc;
             border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+            box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5);
             animation: ripple 1.6s infinite;
         }
 
         @keyframes ripple {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 200, 83, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 102, 204, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
         }
 
-        .master-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.75rem;
-        }
-
-        .master-percentage {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1;
-            color: #111;
-        }
-
-        .master-track-bg {
-            background-color: #e0e0e0;
-            height: 12px;
-            border-radius: 6px;
+        .map-container {
             width: 100%;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-
-        .master-track-fill {
-            background: linear-gradient(90deg, #00b0ff, #00c853);
-            height: 100%;
-            width: 0%;
+            height: 450px;
             border-radius: 6px;
-            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
-        }
-
-        /* Sub Breakdown Rows */
-        .breakdown-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 1.5rem;
-        }
-
-        .fuel-box {
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 0.75rem;
-        }
-
-        .fuel-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-
-        .sub-track-bg {
-            background-color: #e0e0e0;
-            height: 4px;
-            border-radius: 2px;
             overflow: hidden;
+            border: 1px solid #ddd;
         }
 
-        .sub-track-fill {
+        iframe {
+            width: 100%;
             height: 100%;
-            width: 0%;
-            border-radius: 2px;
-            transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+            border: none;
         }
 
-        #wind-fill { background-color: #00b0ff; }
-        #solar-fill { background-color: #fbc02d; }
-        #hydro-fill { background-color: #00e5ff; }
-
-        .time-stamp {
-            font-size: 0.75rem;
-            color: #777;
-            text-align: right;
-        }
-
+        /* Responsive stack for mobile */
         @media (max-width: 600px) {
             header, .content-grid {
                 flex-direction: column;
@@ -203,8 +140,8 @@
             .left-col {
                 width: 100%;
             }
-            .breakdown-grid {
-                grid-template-columns: 1fr;
+            .map-container {
+                height: 300px; /* Shorter map viewport for mobile screens */
             }
         }
     </style>
@@ -229,122 +166,22 @@
         </div>
     </div>
 
-    <!-- LIVE ENERGY TRACKER COMPONENT -->
+    <!-- LIVE ISS TRACKER COMPONENT -->
     <div class="widget-section">
         <h3>Live Project Component</h3>
         <div class="tracker-card">
             <div class="widget-header">
-                <span style="font-weight: 600; font-size: 0.9rem; color: #555;">UK Grid Renewables Share</span>
-                <div class="live-tag"><div class="pulse-dot"></div>Live Data</div>
+                <span style="font-weight: 600; font-size: 0.9rem; color: #555;">Real-Time ISS Orbit Tracker</span>
+                <div class="live-tag"><div class="pulse-dot"></div>Live Tracking</div>
             </div>
             
-            <div class="master-row">
-                <div class="master-percentage" id="total-pct">--%</div>
+            <div class="map-container">
+                <!-- Open-source interactive map window -->
+                <iframe src="https://isstracker.pl/en/embed"></iframe>
             </div>
-            
-            <div class="master-track-bg">
-                <div class="master-track-fill" id="total-bar"></div>
-            </div>
-
-            <div class="breakdown-grid">
-                <!-- Wind Box -->
-                <div class="fuel-box">
-                    <div class="fuel-info">
-                        <span style="color: #00b0ff;">💨 Wind</span>
-                        <span id="wind-val">--%</span>
-                    </div>
-                    <div class="sub-track-bg">
-                        <div class="sub-track-fill" id="wind-fill"></div>
-                    </div>
-                </div>
-
-                <!-- Solar Box -->
-                <div class="fuel-box">
-                    <div class="fuel-info">
-                        <span style="color: #fbc02d;">☀️ Solar</span>
-                        <span id="solar-val">--%</span>
-                    </div>
-                    <div class="sub-track-bg">
-                        <div class="sub-track-fill" id="solar-fill"></div>
-                    </div>
-                </div>
-
-                <!-- Hydro Box -->
-                <div class="fuel-box">
-                    <div class="fuel-info">
-                        <span style="color: #00e5ff;">💧 Hydro</span>
-                        <span id="hydro-val">--%</span>
-                    </div>
-                    <div class="sub-track-bg">
-                        <div class="sub-track-fill" id="hydro-fill"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="time-stamp" id="clock-stamp">Connecting to National Grid data streams...</div>
         </div>
     </div>
 </div>
-
-<script>
-    async function fetchGridData() {
-        const masterText = document.getElementById('total-pct');
-        const masterBar = document.getElementById('total-bar');
-        const clockStamp = document.getElementById('clock-stamp');
-
-        const uiMap = {
-            wind: { text: document.getElementById('wind-val'), bar: document.getElementById('wind-fill') },
-            solar: { text: document.getElementById('solar-val'), bar: document.getElementById('solar-fill') },
-            hydro: { text: document.getElementById('hydro-val'), bar: document.getElementById('hydro-fill') }
-        };
-
-        try {
-            // WORKAROUND FIX: Direct target URL combined with a public open-cors parsing handler
-            const targetApi = 'https://api.carbonintensity.org.uk/generation';
-            const clearProxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetApi);
-
-            const response = await fetch(clearProxy);
-            if (!response.ok) throw new Error('Proxy validation mismatch.');
-            
-            const envelope = await response.json();
-            // The wrapper returns the actual data stringified inside the .contents field
-            const wrapper = JSON.parse(envelope.contents);
-            const mix = wrapper.data.generationmix;
-
-            let renewableSum = 0;
-            const tracker = { wind: 0, solar: 0, hydro: 0 };
-
-            mix.forEach(item => {
-                if (item.fuel in tracker) {
-                    tracker[item.fuel] = item.percentage;
-                    renewableSum += item.percentage;
-                }
-            });
-
-            Object.keys(tracker).forEach(fuel => {
-                const cleanVal = tracker[fuel].toFixed(1);
-                uiMap[fuel].text.innerText = `${cleanVal}%`;
-                uiMap[fuel].bar.style.width = `${cleanVal}%`;
-            });
-
-            const finalTotal = renewableSum.toFixed(1);
-            masterText.innerText = `${finalTotal}%`;
-            masterBar.style.width = `${finalTotal}%`;
-
-            const timeConfig = { hour: '2-digit', minute: '2-digit' };
-            const formattedTime = new Date(wrapper.data.from).toLocaleTimeString([], timeConfig);
-            clockStamp.innerText = `Last Grid Update: ${formattedTime} UK Time (Refreshes every 5m)`;
-
-        } catch (error) {
-            console.error(error);
-            masterText.innerText = '⚠️';
-            clockStamp.innerText = 'Unable to reach grid API. Retrying...';
-        }
-    }
-
-    fetchGridData();
-    setInterval(fetchGridData, 300000);
-</script>
 
 </body>
 </html>
