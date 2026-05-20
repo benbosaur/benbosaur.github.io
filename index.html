@@ -299,16 +299,16 @@
         };
 
         try {
-            // FIX: Added explicit Accept criteria to satisfy strict API query requirements
-            const response = await fetch('https://api.carbonintensity.org.uk/generation', {
-                method: 'GET',
-                headers: { 
-                    'Accept': 'application/json'
-                }
-            });
+            // WORKAROUND FIX: Direct target URL combined with a public open-cors parsing handler
+            const targetApi = 'https://api.carbonintensity.org.uk/generation';
+            const clearProxy = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetApi);
 
-            if (!response.ok) throw new Error('API connection failure.');
-            const wrapper = await response.json();
+            const response = await fetch(clearProxy);
+            if (!response.ok) throw new Error('Proxy validation mismatch.');
+            
+            const envelope = await response.json();
+            // The wrapper returns the actual data stringified inside the .contents field
+            const wrapper = JSON.parse(envelope.contents);
             const mix = wrapper.data.generationmix;
 
             let renewableSum = 0;
