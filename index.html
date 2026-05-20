@@ -65,7 +65,7 @@
             padding-bottom: 5px;
         }
 
-        /* LIVE ISS TRACKER STYLES */
+        /* LIVE TRACKER & PROJECT COMPONENT STYLES */
         .widget-section {
             margin-top: 40px;
             padding-top: 20px;
@@ -78,6 +78,7 @@
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
         }
 
         .widget-header {
@@ -130,6 +131,20 @@
             border: none;
         }
 
+        /* PAGE COUNTER VISUALS */
+        .counter-layout {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+        }
+
         /* Responsive stack for mobile */
         @media (max-width: 600px) {
             header, .content-grid {
@@ -142,6 +157,10 @@
             }
             .map-container {
                 height: 300px;
+            }
+            .counter-layout {
+                flex-direction: column;
+                gap: 8px;
             }
         }
     </style>
@@ -157,18 +176,20 @@
     <div class="content-grid">
         <div class="left-col">
             <h3>Learning Interests</h3>
-            <p>Computer Science<br>Karate<br><a href="food.html" style="color: #0066cc; text-decoration: none;">Food</a></p>
+            <p>Computer Science<br><a href="AI.md" style="color: #0066cc; text-decoration: none;">AI & Machine Learning</a><br>Karate<br><a href="food.html" style="color: #0066cc; text-decoration: none;">Food</a></p>
         </div>
         
         <div class="right-col">
             <h3>About Me</h3>
-            <p>I possess a collection of unique abilities</p>
+            <p>I grew up in Burnley, UK and have spent most of my life there other than a 5 year stint in Missouri, USA</p>
         </div>
     </div>
 
-    <!-- LIVE ISS TRACKER COMPONENT -->
+    <!-- LIVE PROJECT COMPONENT SECTION -->
     <div class="widget-section">
         <h3>Projects</h3>
+        
+        <!-- ISS Orbit Card -->
         <div class="tracker-card">
             <div class="widget-header">
                 <span style="font-weight: 600; font-size: 0.9rem; color: #555;">Real-Time ISS Orbit Tracker</span>
@@ -176,23 +197,19 @@
             </div>
             
             <div class="map-container">
-                <!-- PATCHED DIRECT LINK ENDPOINT -->
                 <iframe src="https://isstracker.pl/en/widget/map?disableInfoBox=1&lang=en"></iframe>
             </div>
         </div>
-    </div>
-</div>
-<!-- NEW VISITOR VIEW COUNTER CARD -->
+
+        <!-- STABLE VISITOR VIEW COUNTER CARD -->
         <div class="tracker-card">
             <div class="widget-header">
                 <span style="font-weight: 600; font-size: 0.9rem; color: #555;">Website Analytics</span>
             </div>
             <div class="counter-layout">
                 <span class="counter-label">Total Page Views:</span>
-                <div class="counter-image-wrapper">
-                    <!-- Secure database tracking hit engine link unique to your username -->
-                    <img src="https://api.monic.in/count?id=benbosaur.github.io&style=digits&bg=222222&fg=00e676" alt="Hits" style="vertical-align: middle;">
-                </div>
+                <!-- Updated stable tracking link utilizing your GitHub username configuration -->
+                <img src="https://komarev.com/ghpvc/?username=benbosaur&color=0066cc&style=flat-square" alt="Hits" style="vertical-align: middle;">
             </div>
         </div>
 
