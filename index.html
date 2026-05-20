@@ -46,6 +46,7 @@
         .content-grid {
             display: flex;
             gap: 30px;
+            margin-bottom: 40px; /* Gives room before the widget */
         }
 
         .left-col {
@@ -64,6 +65,135 @@
             padding-bottom: 5px;
         }
 
+        /* LIVE ENERGY WIDGET STYLES */
+        .widget-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ccc;
+        }
+
+        .tracker-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .live-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(0, 200, 83, 0.1);
+            color: #00c853;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #00c853;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5);
+            animation: ripple 1.6s infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 200, 83, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+        }
+
+        .master-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+
+        .master-percentage {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #111;
+        }
+
+        .master-track-bg {
+            background-color: #e0e0e0;
+            height: 12px;
+            border-radius: 6px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .master-track-fill {
+            background: linear-gradient(90deg, #00b0ff, #00c853);
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        /* Sub Breakdown Rows */
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .fuel-box {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+        .fuel-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .sub-track-bg {
+            background-color: #e0e0e0;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .sub-track-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        #wind-fill { background-color: #00b0ff; }
+        #solar-fill { background-color: #fbc02d; }
+        #hydro-fill { background-color: #00e5ff; }
+
+        .time-stamp {
+            font-size: 0.75rem;
+            color: #777;
+            text-align: right;
+        }
+
         /* Responsive stack for mobile */
         @media (max-width: 600px) {
             header, .content-grid {
@@ -73,6 +203,9 @@
             }
             .left-col {
                 width: 100%;
+            }
+            .breakdown-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -96,7 +229,120 @@
             <p>I grew up in Burnley, UK and have spent most of my life there other than a 5 year stint in Missouri, USA</p>
         </div>
     </div>
+
+    <!-- LIVE ENERGY TRACKER COMPONENT -->
+    <div class="widget-section">
+        <h3>Live Project Component</h3>
+        <div class="tracker-card">
+            <div class="widget-header">
+                <span style="font-weight: 600; font-size: 0.9rem; color: #555;">UK Grid Renewables Share</span>
+                <div class="live-tag"><div class="pulse-dot"></div>Live Data</div>
+            </div>
+            
+            <div class="master-row">
+                <div class="master-percentage" id="total-pct">--%</div>
+            </div>
+            
+            <div class="master-track-bg">
+                <div class="master-track-fill" id="total-bar"></div>
+            </div>
+
+            <div class="breakdown-grid">
+                <!-- Wind Box -->
+                <div class="fuel-box">
+                    <div class="fuel-info">
+                        <span style="color: #00b0ff;">💨 Wind</span>
+                        <span id="wind-val">--%</span>
+                    </div>
+                    <div class="sub-track-bg">
+                        <div class="sub-track-fill" id="wind-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Solar Box -->
+                <div class="fuel-box">
+                    <div class="fuel-info">
+                        <span style="color: #fbc02d;">☀️ Solar</span>
+                        <span id="solar-val">--%</span>
+                    </div>
+                    <div class="sub-track-bg">
+                        <div class="sub-track-fill" id="solar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Hydro Box -->
+                <div class="fuel-box">
+                    <div class="fuel-info">
+                        <span style="color: #00e5ff;">💧 Hydro</span>
+                        <span id="hydro-val">--%</span>
+                    </div>
+                    <div class="sub-track-bg">
+                        <div class="sub-track-fill" id="hydro-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-stamp" id="clock-stamp">Connecting to National Grid data streams...</div>
+        </div>
+    </div>
 </div>
+
+<script>
+    async function fetchGridData() {
+        const masterText = document.getElementById('total-pct');
+        const masterBar = document.getElementById('total-bar');
+        const clockStamp = document.getElementById('clock-stamp');
+
+        const uiMap = {
+            wind: { text: document.getElementById('wind-val'), bar: document.getElementById('wind-fill') },
+            solar: { text: document.getElementById('solar-val'), bar: document.getElementById('solar-fill') },
+            hydro: { text: document.getElementById('hydro-val'), bar: document.getElementById('hydro-fill') }
+        };
+
+        try {
+            const response = await fetch('https://api.carbonintensity.org.uk/generation', {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('API connection failure.');
+            const wrapper = await response.json();
+            const mix = wrapper.data.generationmix;
+
+            let renewableSum = 0;
+            const tracker = { wind: 0, solar: 0, hydro: 0 };
+
+            mix.forEach(item => {
+                if (item.fuel in tracker) {
+                    tracker[item.fuel] = item.percentage;
+                    renewableSum += item.percentage;
+                }
+            });
+
+            Object.keys(tracker).forEach(fuel => {
+                const cleanVal = tracker[fuel].toFixed(1);
+                uiMap[fuel].text.innerText = `${cleanVal}%`;
+                uiMap[fuel].bar.style.width = `${cleanVal}%`;
+            });
+
+            const finalTotal = renewableSum.toFixed(1);
+            masterText.innerText = `${finalTotal}%`;
+            masterBar.style.width = `${finalTotal}%`;
+
+            const timeConfig = { hour: '2-digit', minute: '2-digit' };
+            const formattedTime = new Date(wrapper.data.from).toLocaleTimeString([], timeConfig);
+            clockStamp.innerText = `Last Grid Update: ${formattedTime} UK Time (Refreshes every 5m)`;
+
+        } catch (error) {
+            console.error(error);
+            masterText.innerText = '⚠️';
+            clockStamp.innerText = 'Unable to reach grid API. Retrying...';
+        }
+    }
+
+    fetchGridData();
+    setInterval(fetchGridData, 300000); // Check for data updates every 5 minutes
+</script>
 
 </body>
 </html>
