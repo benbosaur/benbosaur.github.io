@@ -1,9 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <body>
-        <H3>
-            Food
-        </H3>
-    </body>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Scott - Food</title>
+    <style>
+        body {
+            background-color: #f0f0f0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-wrapper {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Top Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .back-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content Card */
+        .content-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+
+        /* TIER LIST TABLE STYLES */
+        .tier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+
+        .tier-table tr {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tier-table tr:last-child {
+            border-bottom: none;
+        }
+
+        /* Label cell styling */
+        .tier-badge {
+            width: 80px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #fff;
+            padding: 20px 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Content cell styling */
+        .tier-content {
+            padding: 15px 20px;
+            background-color: #fbfbfb;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        /* Universal Tier Color Branding */
+        .s-tier { background-color: #ff7f7f; color: #111; }
+        .a-tier { background-color: #ffbf7f; color: #111; }
+        .b-tier { background-color: #ffdf7f; color: #111; }
+        .c-tier { background-color: #ffff7f; color: #111; }
+        .d-tier { background-color: #bfff7f; color: #111; }
+
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header>
+        <h1>Food</h1>
+        <!-- Link to navigate back to your main index page -->
+        <a href="index.html" class="back-link">← Back to Profile</a>
+    </header>
+
+    <div class="content-card">
+        <h3>Pizza Toppings Tier List</h3>
+        
+        <table class="tier-table">
+            <!-- S Tier -->
+            <tr>
+                <td class="tier-badge s-tier">S</td>
+                <td class="tier-content">Pepperoni, Nduja, Spicy Honey</td>
+            </tr>
+            <!-- A Tier -->
+            <tr>
+                <td class="tier-badge a-tier">A</td>
+                <td class="tier-content">BBQ Chicken, Jalapeños, Garlic Mushrooms</td>
+            </tr>
+            <!-- B Tier -->
+            <tr>
+                <td class="tier-badge b-tier">B</td>
+                <td class="tier-content">Ham and Mushroom, Prosciutto</td>
+            </tr>
+            <!-- C Tier -->
+            <tr>
+                <td class="tier-badge c-tier">C</td>
+                <td class="tier-content">Cheese and Tomato (Margerita)</td>
+            </tr>
+            <!-- D Tier -->
+            <tr>
+                <td class="tier-badge d-tier">D</td>
+                <td class="tier-content">Pineapple (Controversial!)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
