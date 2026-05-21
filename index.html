@@ -65,6 +65,133 @@
             padding-bottom: 5px;
         }
 
+        /* NEW BLOG & SEARCH STYLES */
+        .blog-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .blog-header-container h3 {
+            border-bottom: none;
+            margin: 0;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-bar {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 200px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar:focus {
+            border-color: #0066cc;
+        }
+
+        .blog-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* HTML5 Details styling for seamless expand/collapse */
+        .blog-card details {
+            width: 100%;
+        }
+
+        .blog-card summary {
+            list-style: none; /* Removes default arrow */
+            cursor: pointer;
+            outline: none;
+        }
+
+        .blog-card summary::-webkit-details-marker {
+            display: none; /* Removes default arrow for Safari */
+        }
+
+        .blog-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            color: #111;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .blog-snippet {
+            margin: 10px 0 0 0;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0066cc;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Changes text when the details block is open */
+        .blog-card details[open] .read-more-btn {
+            display: none; 
+        }
+
+        .blog-full-content {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .view-all-link {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            background: #e4e4e4;
+            border-radius: 8px;
+        }
+
         /* LIVE TRACKER & PROJECT COMPONENT STYLES */
         .widget-section {
             margin-top: 40px;
@@ -112,7 +239,7 @@
         }
 
         @keyframes ripple {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5); }
+            0 { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5); }
             70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 102, 204, 0); }
             100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
         }
@@ -152,6 +279,14 @@
                 align-items: center;
                 text-align: center;
             }
+            .blog-header-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .search-bar {
+                width: 100%;
+            }
             .left-col {
                 width: 100%;
             }
@@ -185,6 +320,75 @@
         </div>
     </div>
 
+    <!-- NEW RECENT BLOG POSTS SECTION -->
+    <div class="blog-section">
+        <div class="blog-header-container">
+            <h3>Recent Blog Posts</h3>
+            <div class="search-container">
+                <input type="text" id="blogSearch" class="search-bar" placeholder="Search recent posts..." onkeyup="searchBlogs()">
+            </div>
+        </div>
+
+        <div id="blogContainer">
+            <!-- Blog Post 1 -->
+            <div class="blog-card">
+                <details>
+                    <summary>
+                        <div class="blog-title-row">
+                            <span class="blog-title">My Journey Into Computer Science</span>
+                            <span class="blog-date">May 20, 2026</span>
+                        </div>
+                        <p class="blog-snippet">An overview of how I first got into programming, the hurdles I faced early on, and why I love breaking down complex software systems...</p>
+                        <span class="read-more-btn">Read More ↓</span>
+                    </summary>
+                    <div class="blog-full-content">
+                        <p>This is where the rest of your first blog post goes. You can write as much as you'd like here! It will stay completely hidden until the visitor clicks "Read More". Once clicked, it drops down instantly without needing a page reload.</p>
+                        <p>You can even add multiple paragraphs, links, or lists inside this full content container.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-card">
+                <details>
+                    <summary>
+                        <div class="blog-title-row">
+                            <span class="blog-title">What Karate Taught Me About Focus</span>
+                            <span class="blog-date">May 12, 2026</span>
+                        </div>
+                        <p class="blog-snippet">Martial arts isn't just about physical strength; it's a deep lesson in mental stamina. Here is how my training applies to coding...</p>
+                        <span class="read-more-btn">Read More ↓</span>
+                    </summary>
+                    <div class="blog-full-content">
+                        <p>This is the full text of your second blog post. The discipline required to master a specific kata or strike perfectly mirrors the patience needed to debug a nasty runtime error in an application.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-card">
+                <details>
+                    <summary>
+                        <div class="blog-title-row">
+                            <span class="blog-title">The Perfect Pizza Crust Formula</span>
+                            <span class="blog-date">April 28, 2026</span>
+                        </div>
+                        <p class="blog-snippet">My love for food runs deep, but getting a perfect, crispy neapolitan style pizza dough at home took months of trial and error...</p>
+                        <span class="read-more-btn">Read More ↓</span>
+                    </summary>
+                    <div class="blog-full-content">
+                        <p>This is the full text of your third blog post. It comes down to hydration levels (65% is the sweet spot), high-quality flour, and letting the dough ferment slowly in the fridge for at least 48 hours before baking.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results">No matching blog posts found.</div>
+
+        <a href="blog.html" class="view-all-link">View All Blog Posts →</a>
+    </div>
+
     <!-- LIVE PROJECT COMPONENT SECTION -->
     <div class="widget-section">
         <h3>Projects</h3>
@@ -208,13 +412,46 @@
             </div>
             <div class="counter-layout">
                 <span class="counter-label">Total Page Views:</span>
-                <!-- Updated stable tracking link utilizing your GitHub username configuration -->
                 <img src="https://komarev.com/ghpvc/?username=benbosaur&color=0066cc&style=flat-square" alt="Hits" style="vertical-align: middle;">
             </div>
         </div>
 
     </div>
 </div>
+
+<!-- CLIENT-SIDE SEARCH JAVASCRIPT -->
+<script>
+    function searchBlogs() {
+        const input = document.getElementById('blogSearch');
+        const filter = input.value.toLowerCase();
+        const blogContainer = document.getElementById('blogContainer');
+        const cards = blogContainer.getElementsByClassName('blog-card');
+        const noResults = document.getElementById('noResults');
+        let visibleCount = 0;
+
+        for (let i = 0; i < cards.length; i++) {
+            // Searches across both title and snippet text
+            const title = cards[i].querySelector('.blog-title').textContent;
+            const snippet = cards[i].querySelector('.blog-snippet').textContent;
+            const fullContent = cards[i].querySelector('.blog-full-content').textContent;
+            const combinedText = (title + ' ' + snippet + ' ' + fullContent).toLowerCase();
+
+            if (combinedText.includes(filter)) {
+                cards[i].style.display = "";
+                visibleCount++;
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+
+        // Show a message if no posts match the query
+        if (visibleCount === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>

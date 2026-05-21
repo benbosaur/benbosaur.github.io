@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Scott - Blog</title>
+    <style>
+        body {
+            background-color: #f0f0f0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-wrapper {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Top Header Section */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 80px; /* Smaller icon version for the subpage header */
+            height: auto;
+            background-color: white;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        h1 a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        h1 a:hover {
+            color: #0066cc;
+        }
+
+        /* Main Content Section Layout */
+        .content-grid {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .left-col {
+            width: 222px; 
+            flex-shrink: 0;
+        }
+
+        .right-col {
+            flex-grow: 1;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        /* SEARCH BAR STYLES */
+        .blog-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .blog-header-container h3 {
+            border-bottom: none;
+            margin: 0;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-bar {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 200px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar:focus {
+            border-color: #0066cc;
+        }
+
+        /* FULL POST STYLES (Articles are fully open here) */
+        .blog-post {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .blog-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+            color: #111;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        .blog-body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .blog-body p {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        .blog-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-home-link {
+            display: inline-block;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        .back-home-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            background: #e4e4e4;
+            border-radius: 8px;
+        }
+
+        /* Responsive stack for mobile devices */
+        @media (max-width: 600px) {
+            header, .content-grid {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .blog-header-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .search-bar {
+                width: 100%;
+            }
+            .left-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .blog-title-row {
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <header>
+        <a href="index.html">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur" class="profile-pic">
+        </a>
+        <h1><a href="index.html">Ben Scott</a></h1>
+    </header>
+
+    <div class="content-grid">
+        <div class="left-col">
+            <h3>Navigation</h3>
+            <p>
+                <a href="index.html" class="back-home-link" style="margin-top:0;">← Back to Home</a>
+            </p>
+            
+            <h3 style="margin-top: 30px;">Learning Interests</h3>
+            <p>Computer Science<br>Karate<br><a href="food.html" style="color: #0066cc; text-decoration: none;">Food</a></p>
+        </div>
+        
+        <div class="right-col">
+            <div class="blog-header-container">
+                <h3>All Blog Posts</h3>
+                <div class="search-container">
+                    <input type="text" id="archiveSearch" class="search-bar" placeholder="Search archive..." onkeyup="searchArchive()">
+                </div>
+            </div>
+
+            <div id="archiveContainer">
+                <div class="blog-post">
+                    <div class="blog-title-row">
+                        <span class="blog-title">My Journey Into Computer Science</span>
+                        <span class="blog-date">May 20, 2026</span>
+                    </div>
+                    <div class="blog-body">
+                        <p>An overview of how I first got into programming, the hurdles I faced early on, and why I love breaking down complex software systems.</p>
+                        <p>This is where the rest of your first blog post goes. You can write as much as you'd like here! It will stay completely hidden until the visitor clicks "Read More". Once clicked, it drops down instantly without needing a page reload.</p>
+                        <p>You can even add multiple paragraphs, links, or lists inside this full content container.</p>
+                    </div>
+                </div>
+
+                <div class="blog-post">
+                    <div class="blog-title-row">
+                        <span class="blog-title">What Karate Taught Me About Focus</span>
+                        <span class="blog-date">May 12, 2026</span>
+                    </div>
+                    <div class="blog-body">
+                        <p>Martial arts isn't just about physical strength; it's a deep lesson in mental stamina. Here is how my training applies to coding.</p>
+                        <p>This is the full text of your second blog post. The discipline required to master a specific kata or strike perfectly mirrors the patience needed to debug a nasty runtime error in an application.</p>
+                    </div>
+                </div>
+
+                <div class="blog-post">
+                    <div class="blog-title-row">
+                        <span class="blog-title">The Perfect Pizza Crust Formula</span>
+                        <span class="blog-date">April 28, 2026</span>
+                    </div>
+                    <div class="blog-body">
+                        <p>My love for food runs deep, but getting a perfect, crispy neapolitan style pizza dough at home took months of trial and error.</p>
+                        <p>This is the full text of your third blog post. It comes down to hydration levels (65% is the sweet spot), high-quality flour, and letting the dough ferment slowly in the fridge for at least 48 hours before baking.</p>
+                    </div>
+                </div>
+
+                <div class="blog-post">
+                    <div class="blog-title-row">
+                        <span class="blog-title">Setting Up My First Web Server</span>
+                        <span class="blog-date">March 15, 2026</span>
+                    </div>
+                    <div class="blog-body">
+                        <p>This is an example of an older post that doesn't appear on the homepage snippet block, but is safely archived here for your readers to browse.</p>
+                        <p>Configuring Linux environments, managing port access, and understanding reverse proxies felt like wizardry at first, but taking it step-by-step made everything fall into place smoothly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noResults" class="no-results">No archived posts match your search.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchArchive() {
+        const input = document.getElementById('archiveSearch');
+        const filter = input.value.toLowerCase();
+        const container = document.getElementById('archiveContainer');
+        const posts = container.getElementsByClassName('blog-post');
+        const noResults = document.getElementById('noResults');
+        let visibleCount = 0;
+
+        for (let i = 0; i < posts.length; i++) {
+            const title = posts[i].querySelector('.blog-title').textContent;
+            const body = posts[i].querySelector('.blog-body').textContent;
+            const combinedText = (title + ' ' + body).toLowerCase();
+
+            if (combinedText.includes(filter)) {
+                posts[i].style.style.display = ""; // Reset to default
+                posts[i].removeAttribute("style"); // Fully restore layout structure
+                visibleCount++;
+            } else {
+                posts[i].style.display = "none";
+            }
+        }
+
+        if (visibleCount === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
