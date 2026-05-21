@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenboSaur</title>
+    <title>Ben Scott</title>
     <style>
         body {
             background-color: #f0f0f0; 
@@ -65,7 +65,7 @@
             padding-bottom: 5px;
         }
 
-        /* NEW BLOG & SEARCH STYLES */
+        /* BLOG & SEARCH STYLES */
         .blog-header-container {
             display: flex;
             justify-content: space-between;
@@ -107,22 +107,20 @@
             padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        /* HTML5 Details styling for seamless expand/collapse */
         .blog-card details {
             width: 100%;
         }
 
         .blog-card summary {
-            list-style: none; /* Removes default arrow */
+            list-style: none;
             cursor: pointer;
             outline: none;
         }
 
         .blog-card summary::-webkit-details-marker {
-            display: none; /* Removes default arrow for Safari */
+            display: none;
         }
 
         .blog-title-row {
@@ -157,7 +155,6 @@
             font-weight: 600;
         }
 
-        /* Changes text when the details block is open */
         .blog-card details[open] .read-more-btn {
             display: none; 
         }
@@ -239,7 +236,7 @@
         }
 
         @keyframes ripple {
-            0 { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.5); }
             70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 102, 204, 0); }
             100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
         }
@@ -258,7 +255,6 @@
             border: none;
         }
 
-        /* PAGE COUNTER VISUALS */
         .counter-layout {
             display: flex;
             align-items: center;
@@ -272,7 +268,6 @@
             color: #555;
         }
 
-        /* Responsive stack for mobile */
         @media (max-width: 600px) {
             header, .content-grid {
                 flex-direction: column;
@@ -305,7 +300,7 @@
 <div class="page-wrapper">
     <header>
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur" class="profile-pic">
-        <h1>BenboSaur</h1>
+        <h1>Ben Scott</h1>
     </header>
 
     <div class="content-grid">
@@ -320,7 +315,7 @@
         </div>
     </div>
 
-    <!-- NEW RECENT BLOG POSTS SECTION -->
+    <!-- RECENT BLOG POSTS SECTION -->
     <div class="blog-section">
         <div class="blog-header-container">
             <h3>Recent Blog Posts</h3>
@@ -329,61 +324,9 @@
             </div>
         </div>
 
-        <div id="blogContainer">
-            <!-- Blog Post 1 -->
-            <div class="blog-card">
-                <details>
-                    <summary>
-                        <div class="blog-title-row">
-                            <span class="blog-title">My Journey Into Computer Science</span>
-                            <span class="blog-date">May 20, 2026</span>
-                        </div>
-                        <p class="blog-snippet">An overview of how I first got into programming, the hurdles I faced early on, and why I love breaking down complex software systems...</p>
-                        <span class="read-more-btn">Read More ↓</span>
-                    </summary>
-                    <div class="blog-full-content">
-                        <p>This is where the rest of your first blog post goes. You can write as much as you'd like here! It will stay completely hidden until the visitor clicks "Read More". Once clicked, it drops down instantly without needing a page reload.</p>
-                        <p>You can even add multiple paragraphs, links, or lists inside this full content container.</p>
-                    </div>
-                </details>
-            </div>
+        <!-- Populated automatically via JavaScript -->
+        <div id="blogContainer"></div>
 
-            <!-- Blog Post 2 -->
-            <div class="blog-card">
-                <details>
-                    <summary>
-                        <div class="blog-title-row">
-                            <span class="blog-title">What Karate Taught Me About Focus</span>
-                            <span class="blog-date">May 12, 2026</span>
-                        </div>
-                        <p class="blog-snippet">Martial arts isn't just about physical strength; it's a deep lesson in mental stamina. Here is how my training applies to coding...</p>
-                        <span class="read-more-btn">Read More ↓</span>
-                    </summary>
-                    <div class="blog-full-content">
-                        <p>This is the full text of your second blog post. The discipline required to master a specific kata or strike perfectly mirrors the patience needed to debug a nasty runtime error in an application.</p>
-                    </div>
-                </details>
-            </div>
-
-            <!-- Blog Post 3 -->
-            <div class="blog-card">
-                <details>
-                    <summary>
-                        <div class="blog-title-row">
-                            <span class="blog-title">The Perfect Pizza Crust Formula</span>
-                            <span class="blog-date">April 28, 2026</span>
-                        </div>
-                        <p class="blog-snippet">My love for food runs deep, but getting a perfect, crispy neapolitan style pizza dough at home took months of trial and error...</p>
-                        <span class="read-more-btn">Read More ↓</span>
-                    </summary>
-                    <div class="blog-full-content">
-                        <p>This is the full text of your third blog post. It comes down to hydration levels (65% is the sweet spot), high-quality flour, and letting the dough ferment slowly in the fridge for at least 48 hours before baking.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-
-        <!-- No Results Message -->
         <div id="noResults" class="no-results">No matching blog posts found.</div>
 
         <a href="blog.html" class="view-all-link">View All Blog Posts →</a>
@@ -393,19 +336,16 @@
     <div class="widget-section">
         <h3>Projects</h3>
         
-        <!-- ISS Orbit Card -->
         <div class="tracker-card">
             <div class="widget-header">
                 <span style="font-weight: 600; font-size: 0.9rem; color: #555;">Real-Time ISS Orbit Tracker</span>
                 <div class="live-tag"><div class="pulse-dot"></div>Live Tracking</div>
             </div>
-            
             <div class="map-container">
                 <iframe src="https://isstracker.pl/en/widget/map?disableInfoBox=1&lang=en"></iframe>
             </div>
         </div>
 
-        <!-- STABLE VISITOR VIEW COUNTER CARD -->
         <div class="tracker-card">
             <div class="widget-header">
                 <span style="font-weight: 600; font-size: 0.9rem; color: #555;">Website Analytics</span>
@@ -415,28 +355,54 @@
                 <img src="https://komarev.com/ghpvc/?username=benbosaur&color=0066cc&style=flat-square" alt="Hits" style="vertical-align: middle;">
             </div>
         </div>
-
     </div>
 </div>
 
-<!-- CLIENT-SIDE SEARCH JAVASCRIPT -->
+<!-- Connect the data source -->
+<script src="posts.js"></script>
 <script>
+    // Build the homepage dynamic list
+    function loadHomepageBlogs() {
+        const container = document.getElementById('blogContainer');
+        container.innerHTML = '';
+        
+        // Grab only the first 3 posts (the latest ones)
+        const latestPosts = BLOG_POSTS.slice(0, 3);
+        
+        latestPosts.forEach(post => {
+            const card = document.createElement('div');
+            card.className = 'blog-card';
+            card.innerHTML = `
+                <details>
+                    <summary>
+                        <div class="blog-title-row">
+                            <span class="blog-title">${post.title}</span>
+                            <span class="blog-date">${post.date}</span>
+                        </div>
+                        <p class="blog-snippet">${post.snippet}</p>
+                        <span class="read-more-btn">Read More ↓</span>
+                    </summary>
+                    <div class="blog-full-content">${post.content}</div>
+                </details>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Search operational logic
     function searchBlogs() {
         const input = document.getElementById('blogSearch');
         const filter = input.value.toLowerCase();
-        const blogContainer = document.getElementById('blogContainer');
-        const cards = blogContainer.getElementsByClassName('blog-card');
-        const noResults = document.getElementById('noResults');
+        const cards = document.getElementsByClassName('blog-card');
         let visibleCount = 0;
 
         for (let i = 0; i < cards.length; i++) {
-            // Searches across both title and snippet text
             const title = cards[i].querySelector('.blog-title').textContent;
             const snippet = cards[i].querySelector('.blog-snippet').textContent;
-            const fullContent = cards[i].querySelector('.blog-full-content').textContent;
-            const combinedText = (title + ' ' + snippet + ' ' + fullContent).toLowerCase();
+            const content = cards[i].querySelector('.blog-full-content').textContent;
+            const poolText = (title + ' ' + snippet + ' ' + content).toLowerCase();
 
-            if (combinedText.includes(filter)) {
+            if (poolText.includes(filter)) {
                 cards[i].style.display = "";
                 visibleCount++;
             } else {
@@ -444,13 +410,11 @@
             }
         }
 
-        // Show a message if no posts match the query
-        if (visibleCount === 0) {
-            noResults.style.display = "block";
-        } else {
-            noResults.style.display = "none";
-        }
+        document.getElementById('noResults').style.display = visibleCount === 0 ? "block" : "none";
     }
+
+    // Run the constructor upon arrival
+    window.onload = loadHomepageBlogs;
 </script>
 
 </body>

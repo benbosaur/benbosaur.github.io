@@ -20,7 +20,6 @@
             width: 100%;
         }
 
-        /* Top Header Section */
         header {
             display: flex;
             align-items: center;
@@ -29,7 +28,7 @@
         }
 
         .profile-pic {
-            width: 80px; /* Smaller icon version for the subpage header */
+            width: 80px;
             height: auto;
             background-color: white;
             padding: 5px;
@@ -51,7 +50,6 @@
             color: #0066cc;
         }
 
-        /* Main Content Section Layout */
         .content-grid {
             display: flex;
             gap: 30px;
@@ -74,7 +72,6 @@
             padding-bottom: 5px;
         }
 
-        /* SEARCH BAR STYLES */
         .blog-header-container {
             display: flex;
             justify-content: space-between;
@@ -108,7 +105,6 @@
             border-color: #0066cc;
         }
 
-        /* FULL POST STYLES (Articles are fully open here) */
         .blog-post {
             background-color: white;
             border: 1px solid #ccc;
@@ -145,15 +141,6 @@
             color: #333;
         }
 
-        .blog-body p {
-            margin-top: 0;
-            margin-bottom: 1em;
-        }
-
-        .blog-body p:last-child {
-            margin-bottom: 0;
-        }
-
         .back-home-link {
             display: inline-block;
             color: #0066cc;
@@ -176,7 +163,6 @@
             border-radius: 8px;
         }
 
-        /* Responsive stack for mobile devices */
         @media (max-width: 600px) {
             header, .content-grid {
                 flex-direction: column;
@@ -216,9 +202,7 @@
     <div class="content-grid">
         <div class="left-col">
             <h3>Navigation</h3>
-            <p>
-                <a href="index.html" class="back-home-link" style="margin-top:0;">← Back to Home</a>
-            </p>
+            <p><a href="index.html" class="back-home-link" style="margin-top:0;">← Back to Home</a></p>
             
             <h3 style="margin-top: 30px;">Learning Interests</h3>
             <p>Computer Science<br>Karate<br><a href="food.html" style="color: #0066cc; text-decoration: none;">Food</a></p>
@@ -232,87 +216,61 @@
                 </div>
             </div>
 
-            <div id="archiveContainer">
-                <div class="blog-post">
-                    <div class="blog-title-row">
-                        <span class="blog-title">Why I had to leave education & teaching</span>
-                        <span class="blog-date">May 20, 2026</span>
-                    </div>
-                    <div class="blog-body">
-                        <p>Teaching is one of the toughest jobs! Yes the holidays are nice, but when most of the holidays are spent planning and marking they become a false perk.</p>
-                        <p>Teaching is unpredicatable, the staff shortages are rife, leading to the constant cover of lessons outside of skillset, but also changes to curriculums are constant as the government adopts unfathomed alternative directions.</p>
-                        <p>But it wasn't all this. It was the rapid avialbility of AI tools. Imagine spending your weekend, developing materials to cement fundamentals and springboard the development of students only to constantly have AI slop handed in for assessments and a complete lack of engagement in fundamentals. This became so unrewarding I had to get out. Student skills were deprciating cohort after cohort and I do fear for the future. My message to learners is use AI as a learning tool and not a replacement for your own craft. This message I tried repeatedly to get across but unfortunately, I may have had a better reaction from talking to a brick wall....</p>
-                    </div>
-                </div>
-
-                <div class="blog-post">
-                    <div class="blog-title-row">
-                        <span class="blog-title">What Karate Taught Me About Focus</span>
-                        <span class="blog-date">May 12, 2026</span>
-                    </div>
-                    <div class="blog-body">
-                        <p>Martial arts isn't just about physical strength; it's a deep lesson in mental stamina. Here is how my training applies to coding.</p>
-                        <p>This is the full text of your second blog post. The discipline required to master a specific kata or strike perfectly mirrors the patience needed to debug a nasty runtime error in an application.</p>
-                    </div>
-                </div>
-
-                <div class="blog-post">
-                    <div class="blog-title-row">
-                        <span class="blog-title">The Perfect Pizza Crust Formula</span>
-                        <span class="blog-date">April 28, 2026</span>
-                    </div>
-                    <div class="blog-body">
-                        <p>My love for food runs deep, but getting a perfect, crispy neapolitan style pizza dough at home took months of trial and error.</p>
-                        <p>This is the full text of your third blog post. It comes down to hydration levels (65% is the sweet spot), high-quality flour, and letting the dough ferment slowly in the fridge for at least 48 hours before baking.</p>
-                    </div>
-                </div>
-
-                <div class="blog-post">
-                    <div class="blog-title-row">
-                        <span class="blog-title">Setting Up My First Web Server</span>
-                        <span class="blog-date">March 15, 2026</span>
-                    </div>
-                    <div class="blog-body">
-                        <p>This is an example of an older post that doesn't appear on the homepage snippet block, but is safely archived here for your readers to browse.</p>
-                        <p>Configuring Linux environments, managing port access, and understanding reverse proxies felt like wizardry at first, but taking it step-by-step made everything fall into place smoothly.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Populated automatically via JavaScript -->
+            <div id="archiveContainer"></div>
 
             <div id="noResults" class="no-results">No archived posts match your search.</div>
         </div>
     </div>
 </div>
 
+<!-- Connect the identical data source -->
+<script src="posts.js"></script>
 <script>
+    // Build the full archive list
+    function loadArchiveBlogs() {
+        const container = document.getElementById('archiveContainer');
+        container.innerHTML = '';
+        
+        // Loop through absolutely every post in the script array
+        BLOG_POSTS.forEach(post => {
+            const postArticle = document.createElement('div');
+            postArticle.className = 'blog-post';
+            postArticle.innerHTML = `
+                <div class="blog-title-row">
+                    <span class="blog-title">${post.title}</span>
+                    <span class="blog-date">${post.date}</span>
+                </div>
+                <div class="blog-body">${post.content}</div>
+            `;
+            container.appendChild(postArticle);
+        });
+    }
+
+    // Archive filter system
     function searchArchive() {
         const input = document.getElementById('archiveSearch');
         const filter = input.value.toLowerCase();
-        const container = document.getElementById('archiveContainer');
-        const posts = container.getElementsByClassName('blog-post');
-        const noResults = document.getElementById('noResults');
+        const posts = document.getElementsByClassName('blog-post');
         let visibleCount = 0;
 
         for (let i = 0; i < posts.length; i++) {
             const title = posts[i].querySelector('.blog-title').textContent;
             const body = posts[i].querySelector('.blog-body').textContent;
-            const combinedText = (title + ' ' + body).toLowerCase();
+            const poolText = (title + ' ' + body).toLowerCase();
 
-            if (combinedText.includes(filter)) {
-                posts[i].style.style.display = ""; // Reset to default
-                posts[i].removeAttribute("style"); // Fully restore layout structure
+            if (poolText.includes(filter)) {
+                posts[i].style.display = "";
                 visibleCount++;
             } else {
                 posts[i].style.display = "none";
             }
         }
 
-        if (visibleCount === 0) {
-            noResults.style.display = "block";
-        } else {
-            noResults.style.display = "none";
-        }
+        document.getElementById('noResults').style.display = visibleCount === 0 ? "block" : "none";
     }
+
+    window.onload = loadArchiveBlogs;
 </script>
 
 </body>
