@@ -1,7 +1,7 @@
 // Place your newest blog posts at the top of this list!
 const BLOG_POSTS = [
     {
-        title: "Why I had to leave teaching",
+        title: "Why I had to leave teaching!",
         date: "May 20, 2026",
         snippet: "Teaching is one of the toughest jobs! Yes the holidays are nice, but when most of the holidays are spent planning and marking they become a false perk.",
         content: `
